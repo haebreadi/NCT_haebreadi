@@ -1,4 +1,4 @@
-# Study03_Quiz
+# NCT 퀴즈
 
 NCT 4지선다 퀴즈 앱 — made by 해빵
 
