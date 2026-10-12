@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NCT 퀴즈</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="student-info">★ 해빵 ★</div>
+
+  <main class="container">
+    <h1 class="title"><span class="star-icon" aria-hidden="true"></span>NCT 퀴즈<span class="star-icon" aria-hidden="true"></span></h1>
+
+    <!-- 시작 화면: 카테고리 선택 -->
+    <section id="screen-start" class="screen active">
+      <p class="lead bubble">그룹을 골라 줘! 한 판은 10문제야.</p>
+      <div id="category-list" class="grid"></div>
+    </section>
+
+    <!-- 모드 선택 화면 -->
+    <section id="screen-mode" class="screen">
+      <p class="lead bubble"><strong id="mode-category"></strong> · 모드를 고르세요</p>
+      <div class="mode-list">
+        <button class="mode-btn" data-mode="practice">
+          <span class="mode-name">연습</span>
+          <span class="mode-rule">시간 제한·힌트 없음, 맞히면 1점, 틀린 문제 다시 풀기 · 순위표에 기록되지 않음</span>
+        </button>
+        <button class="mode-btn" data-mode="speed">
+          <span class="mode-name">스피드</span>
+          <span class="mode-rule">문항마다 15초, 시간이 지나면 오답 · 맞히면 1점</span>
+        </button>
+        <button class="mode-btn" data-mode="hint">
+          <span class="mode-name">힌트</span>
+          <span class="mode-rule">문항마다 힌트 1번(오답 2개 지우기) · 맞히면 1점, 힌트를 썼으면 0.5점</span>
+        </button>
+      </div>
+      <button id="btn-back" class="secondary-btn">뒤로</button>
+    </section>
+
+    <!-- 문항 화면 -->
+    <section id="screen-quiz" class="screen">
+      <div class="quiz-top">
+        <span id="quiz-label" class="badge"></span>
+        <span id="quiz-progress"></span>
+        <span id="quiz-score"></span>
+      </div>
+      <div id="timer" class="timer hidden">남은 시간 <strong id="timer-value">15</strong>초</div>
+      <h2 id="question" class="question"></h2>
+      <div id="choices" class="choices"></div>
+      <button id="btn-hint" class="hint-btn hidden">힌트 (오답 2개 지우기)</button>
+      <div id="feedback" class="feedback hidden"></div>
+      <button id="btn-next" class="primary-btn hidden">다음</button>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="screen-result" class="screen">
+      <h2 class="result-title">결과</h2>
+      <p id="result-label" class="lead"></p>
+      <p id="result-score" class="result-score"></p>
+      <p id="result-note" class="lead"></p>
+      <ol id="result-list" class="result-list"></ol>
+      <button id="btn-retry" class="primary-btn hidden">틀린 문제 다시 풀기</button>
+      <button id="btn-again" class="secondary-btn">같은 모드 다시</button>
+      <button id="btn-home" class="secondary-btn">처음으로</button>
+    </section>
+  </main>
+
+  <script src="questions.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
