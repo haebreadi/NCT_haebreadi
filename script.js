@@ -5,8 +5,7 @@ const QUESTIONS_PER_ROUND = 10;
 const TIME_LIMIT = 15;    // 스피드 모드: 문항마다 15초
 const HINT_SCORE = 0.5;   // 힌트 모드: 힌트를 쓰고 맞히면 0.5점
 const MODES = {
-  practice: { name: "연습" },
-  speed: { name: "스피드" },
+  speed: { name: "스피드" },     // 모드 선택 화면에서는 "퀴즈 시작!" 버튼
   hint: { name: "힌트" },
 };
 
@@ -261,7 +260,6 @@ function showResult() {
   let note = "";
   if (!state.isRetry && state.mode === "hint") note = `점수 ${formatScore(state.score)}점`;
   if (state.isRetry) note = `다시 풀기는 채점하지 않습니다. 처음 점수 ${formatScore(state.firstScore)} / ${state.firstTotal} 그대로입니다.`;
-  if (state.mode === "practice") note += (note ? " " : "") + "순위표에 기록되지 않음";
   $("result-note").textContent = note;
 
   const list = $("result-list");
@@ -287,9 +285,6 @@ function showResult() {
     list.appendChild(li);
   });
 
-  // 틀린 문제 다시 풀기는 연습 모드에서만, 틀린 문항이 있을 때만
-  const hasWrong = correctCount < total;
-  $("btn-retry").classList.toggle("hidden", !(state.mode === "practice" && hasWrong));
 
   showScreen("result");
 }
@@ -312,7 +307,7 @@ function runSelfTest() {
   check("해설과 출처가 있음", QUESTIONS.every((q) => q.explanation && q.source && /^https:\/\//.test(q.source.url)));
   check("보기를 섞어도 정답이 유지됨", QUESTIONS.every((q) => { const s = shuffleChoices(q); return s.choices[s.answer] === q.choices[q.answer]; }));
   check("한 판은 10문항", shuffle(QUESTIONS.filter((q) => q.category === CATEGORIES[0].id)).slice(0, QUESTIONS_PER_ROUND).length === 10);
-  check("모드 3개(연습, 스피드, 힌트)", Object.keys(MODES).join() === "practice,speed,hint");
+  check("모드 2개(스피드, 힌트)", Object.keys(MODES).join() === "speed,hint");
   check("스피드 제한 시간 15초", TIME_LIMIT === 15);
   check("오답과 시간 초과는 0점", scoreOf(false, false) === 0 && scoreOf(false, true) === 0);
   check("힌트 없이 맞히면 1점", scoreOf(true, false) === 1);
@@ -329,7 +324,6 @@ if (typeof document !== "undefined") {
   $("btn-back").addEventListener("click", () => showScreen("start"));
   $("btn-hint").addEventListener("click", useHint);
   $("btn-next").addEventListener("click", next);
-  $("btn-retry").addEventListener("click", startRetry);
   $("btn-again").addEventListener("click", () => startRound(state.mode));
   $("btn-home").addEventListener("click", () => { stopTimer(); showScreen("start"); });
   renderCategories();

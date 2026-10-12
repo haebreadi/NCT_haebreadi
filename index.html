@@ -14,7 +14,7 @@
 
     <!-- 시작 화면: 카테고리 선택 -->
     <section id="screen-start" class="screen active">
-      <p class="lead bubble">그룹을 골라 줘! 한 판은 10문제야.</p>
+      <p class="lead bubble">유닛을 골라주세요~ 💚</p>
       <div id="category-list" class="grid"></div>
     </section>
 
@@ -22,13 +22,9 @@
     <section id="screen-mode" class="screen">
       <p class="lead bubble"><strong id="mode-category"></strong> · 모드를 고르세요</p>
       <div class="mode-list">
-        <button class="mode-btn" data-mode="practice">
-          <span class="mode-name">연습</span>
-          <span class="mode-rule">시간 제한·힌트 없음, 맞히면 1점, 틀린 문제 다시 풀기 · 순위표에 기록되지 않음</span>
-        </button>
         <button class="mode-btn" data-mode="speed">
-          <span class="mode-name">스피드</span>
-          <span class="mode-rule">문항마다 15초, 시간이 지나면 오답 · 맞히면 1점</span>
+          <span class="mode-name">퀴즈 시작!</span>
+          <span class="mode-rule">한 판 10문제, 문항마다 15초! 시간이 지나면 오답 · 맞히면 1점</span>
         </button>
         <button class="mode-btn" data-mode="hint">
           <span class="mode-name">힌트</span>
@@ -57,11 +53,10 @@
     <section id="screen-result" class="screen">
       <h2 class="result-title">결과</h2>
       <p id="result-label" class="lead"></p>
-      <p id="result-score" class="result-score"></p>
+      <div class="result-wrap"><p id="result-score" class="result-score"></p></div>
       <p id="result-note" class="lead"></p>
       <ol id="result-list" class="result-list"></ol>
-      <button id="btn-retry" class="primary-btn hidden">틀린 문제 다시 풀기</button>
-      <button id="btn-again" class="secondary-btn">같은 모드 다시</button>
+      <button id="btn-again" class="primary-btn">한 판 더!</button>
       <button id="btn-home" class="secondary-btn">처음으로</button>
     </section>
   </main>
