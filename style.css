@@ -129,6 +129,10 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .timer strong { font-size: 1.4rem; font-weight: normal; color: var(--neon); text-shadow: var(--glow); }
 .timer.warn strong { color: var(--bad); text-shadow: 0 0 8px var(--bad); }
 
+.question-image {
+  display: block; margin: 16px auto 0; max-width: 100%; max-height: 300px; border-radius: 12px;
+  border: 3px solid var(--neon); box-shadow: 0 0 14px rgba(127, 255, 0, .45);
+}
 .question {
   font-size: 1.2rem; font-weight: normal; margin: 16px 0; padding: 14px 16px;
   background: #fff; color: #111; border: 2px solid #222; border-radius: 6px; box-shadow: 4px 4px 0 rgba(0, 0, 0, .5);

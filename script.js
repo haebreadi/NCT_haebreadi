@@ -122,6 +122,9 @@ function renderQuestion() {
   $("quiz-progress").textContent = `${state.index + 1} / ${state.list.length}`;
   updateScoreLabel();
   $("question").textContent = q.question;
+  const img = $("question-image");
+  if (q.image) { img.src = q.image; img.alt = q.question; img.classList.remove("hidden"); }
+  else { img.removeAttribute("src"); img.classList.add("hidden"); }
   $("feedback").className = "feedback hidden";
   $("btn-next").classList.add("hidden");
 
@@ -220,10 +223,8 @@ function choose(chosen) {
   t.textContent = title;
   const ex = document.createElement("div");
   ex.textContent = q.explanation + " ";
-  const a = document.createElement("a");
-  a.href = q.source.url;
-  a.target = "_blank";
-  a.rel = "noopener";
+  const a = document.createElement(q.source.url ? "a" : "span");
+  if (q.source.url) { a.href = q.source.url; a.target = "_blank"; a.rel = "noopener"; }
   a.textContent = `출처: ${q.source.name}`;
   ex.appendChild(a);
   fb.append(t, ex);
@@ -304,7 +305,7 @@ function runSelfTest() {
   check("문항 id가 겹치지 않음", new Set(ids).size === ids.length);
   check("보기 4개가 서로 다름", QUESTIONS.every((q) => q.choices.length === 4 && new Set(q.choices).size === 4));
   check("정답 위치가 0~3", QUESTIONS.every((q) => Number.isInteger(q.answer) && q.answer >= 0 && q.answer <= 3));
-  check("해설과 출처가 있음", QUESTIONS.every((q) => q.explanation && q.source && /^https:\/\//.test(q.source.url)));
+  check("해설과 출처가 있음", QUESTIONS.every((q) => q.explanation && q.source && q.source.name && (!q.source.url || /^https:\/\//.test(q.source.url))));
   check("보기를 섞어도 정답이 유지됨", QUESTIONS.every((q) => { const s = shuffleChoices(q); return s.choices[s.answer] === q.choices[q.answer]; }));
   check("한 판은 10문항", shuffle(QUESTIONS.filter((q) => q.category === CATEGORIES[0].id)).slice(0, QUESTIONS_PER_ROUND).length === 10);
   check("모드 2개(스피드, 힌트)", Object.keys(MODES).join() === "speed,hint");

@@ -1,6 +1,6 @@
 // 퀴즈 문항 데이터 (카테고리 4개 × 10문항 = 40문항) - 주제: NCT
 // 문항 작성 규칙은 CLAUDE.md의 "문항 작성 규칙"을 따르고, 해설의 출처 표기와 길이는 PRD.md 4.2를 따른다.
-// 형식: { id, category, question, choices: [보기 4개], answer: 정답 보기의 인덱스(0~3), explanation, source: { name, url } }
+// 형식: { id, category, question, image?(선택: 사진 경로), choices: [보기 4개], answer: 정답 보기의 인덱스(0~3), explanation, source: { name, url? } }
 // 보기 순서는 script.js가 판마다 섞는다.
 // 멤버 수처럼 시간이 지나면 바뀌는 사실은 문항으로 쓰지 않는다.
 
@@ -82,8 +82,8 @@ const QUESTIONS = [
     explanation: "WayV의 미니 4집은 2022년 발매한 「Phantom」이다.", source: NAMU.wayv },
   { id: "wayv-09", category: "wayv", question: "WayV 멤버 텐(TEN)의 국적은?", choices: ["태국", "중국", "대만", "일본"], answer: 0,
     explanation: "WayV 멤버 가운데 텐은 태국 국적이다.", source: NAMU.wayv },
-  { id: "wayv-10", category: "wayv", question: "WayV 멤버 양양(YANGYANG)의 국적은?", choices: ["대만", "태국", "중국", "일본"], answer: 0,
-    explanation: "WayV 멤버 가운데 양양은 대만 국적이다.", source: NAMU.wayv },
+  { id: "wayv-10", category: "wayv", question: "사진 속 강아지의 이름은?", image: "images/wayv-10.jpg", choices: ["벨라", "대갈이", "루나", "벨리"], answer: 0,
+    explanation: "사진 속 강아지의 이름은 벨라다.", source: { name: "해빵 제공" } },
 
   // ── NCT WISH ──
   { id: "wish-01", category: "wish", question: "NCT WISH가 공식 데뷔일(2024년 2월 21일)에 데뷔곡 무대를 처음 선보인 도시는?", choices: ["도쿄", "서울", "오사카", "방콕"], answer: 0,
