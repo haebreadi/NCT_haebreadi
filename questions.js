@@ -83,7 +83,7 @@ const QUESTIONS = [
   { id: "wayv-09", category: "wayv", question: "WayV 멤버 텐(TEN)의 국적은?", choices: ["태국", "중국", "대만", "일본"], answer: 0,
     explanation: "WayV 멤버 가운데 텐은 태국 국적이다.", source: NAMU.wayv },
   { id: "wayv-10", category: "wayv", question: "사진 속 강아지의 이름은?", image: "images/wayv-10.jpg", choices: ["벨라", "대갈이", "루나", "벨리"], answer: 0,
-    explanation: "사진 속 강아지의 이름은 벨라다.", source: { name: "해빵 제공" } },
+    explanation: "사진 속 강아지의 이름은 벨라다.", source: { name: "샤오쥔 인스타그램 @djxiao_888", url: "https://www.instagram.com/djxiao_888/" } },
 
   // ── NCT WISH ──
   { id: "wish-01", category: "wish", question: "NCT WISH가 공식 데뷔일(2024년 2월 21일)에 데뷔곡 무대를 처음 선보인 도시는?", choices: ["도쿄", "서울", "오사카", "방콕"], answer: 0,
